@@ -1,19 +1,24 @@
 const mongoose = require('mongoose');
+const user_schema = require('../models/user_schema');
+const admin_schema = require('../models/admin_schema');
 
+module.exports.database = async () => {
+  const connectionParams = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  };
 
-module.exports.database=() => {
-
-    const connectionParams = {
-        useNewUrlParser: true,
-        useUnifiedTopology : true,
-    };
-
-    try {
-        mongoose.connect('mongodb+srv://MukhtharAzeez:zPJm0DWYQP8iBJbC@cluster0.gtk0l6y.mongodb.net/rafCart?retryWrites=true&w=majority'),
-        connectionParams,
-        console.log("Database connected");
-    }catch(e) {
-        console.log("Databases connection failed");
-    }
-
+  try {
+    mongoose.connect(
+      'mongodb+srv://basilaslamnp:jvRq1L63xNDTw5r6@cluster0.bzlrifq.mongodb.net/RafCart?retryWrites=true&w=majority',
+      connectionParams
+    ).then(async (connection) => {
+        console.log('Database connected');
+    }).catch((err) => {
+        console.log(err);
+    })
+    
+  } catch (error) {
+    console.error('Database connection failed:', error);
+  }
 };

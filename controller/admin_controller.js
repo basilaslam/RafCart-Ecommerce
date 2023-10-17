@@ -257,6 +257,7 @@ module.exports = {
                     req.session.adminLoggedIn=true
                 res.redirect('/admin')
             }else{
+                console.log('admin no data')
                 res.redirect('/admin/admin-auth')
             }
         } catch (error) {
